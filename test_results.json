@@ -1,0 +1,870 @@
+[
+ {
+  "model": "deepseek-v4.1-flash-free",
+  "success": 3,
+  "correct": 3,
+  "avg_lat": 2.9,
+  "min_lat": 2.48,
+  "max_lat": 3.38,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 3.3811614513397217,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 2.8351144790649414,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 2.4847071170806885,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ },
+ {
+  "model": "big-pickle",
+  "success": 3,
+  "correct": 3,
+  "avg_lat": 2.93,
+  "min_lat": 2.49,
+  "max_lat": 3.7,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 3.6952712535858154,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 2.4904582500457764,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 2.603126049041748,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ },
+ {
+  "model": "flint-40b-free",
+  "success": 3,
+  "correct": 3,
+  "avg_lat": 4.58,
+  "min_lat": 3.18,
+  "max_lat": 6.61,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 6.609980344772339,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 3.180438280105591,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 3.944739818572998,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ },
+ {
+  "model": "glm-5.3-flash-free",
+  "success": 3,
+  "correct": 3,
+  "avg_lat": 1.61,
+  "min_lat": 1.2,
+  "max_lat": 1.83,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.8254127502441406,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎（Paris）"
+   },
+   {
+    "round": 2,
+    "lat": 1.7972209453582764,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 1.199415922164917,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ },
+ {
+  "model": "mimo-v2.6-flash-free",
+  "success": 3,
+  "correct": 3,
+  "avg_lat": 5.69,
+  "min_lat": 3.66,
+  "max_lat": 6.82,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 6.575396537780762,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 3.660160541534424,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 6.822105407714844,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ },
+ {
+  "model": "kilo/minimax/minimax-m3.1-flash:free",
+  "success": 0,
+  "correct": 0,
+  "avg_lat": null,
+  "min_lat": null,
+  "max_lat": null,
+  "detail": [
+   {
+    "round": 1,
+    "lat": null,
+    "ok_http": false,
+    "correct": false,
+    "out": "HTTPError: HTTP Error 502: Bad Gateway"
+   },
+   {
+    "round": 2,
+    "lat": null,
+    "ok_http": false,
+    "correct": false,
+    "out": "HTTPError: HTTP Error 502: Bad Gateway"
+   },
+   {
+    "round": 3,
+    "lat": null,
+    "ok_http": false,
+    "correct": false,
+    "out": "HTTPError: HTTP Error 502: Bad Gateway"
+   }
+  ]
+ },
+ {
+  "model": "kilo/recursive/flint-v1.0:free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 1.49,
+  "min_lat": 1.08,
+  "max_lat": 1.81,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.0784962177276611,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 1.809866189956665,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 1.5717682838439941,
+    "ok_http": true,
+    "correct": false,
+    "out": ""
+   }
+  ]
+ },
+ {
+  "model": "nemotron-3-ultra-free",
+  "success": 3,
+  "correct": 3,
+  "avg_lat": 6.61,
+  "min_lat": 3.58,
+  "max_lat": 12.16,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 12.156984567642212,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 4.109187364578247,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 3.575322151184082,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ },
+ {
+  "model": "kilo/reflection/beam-free",
+  "success": 3,
+  "correct": 3,
+  "avg_lat": 1.22,
+  "min_lat": 1.08,
+  "max_lat": 1.3,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.284799337387085,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 1.0761501789093018,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 1.298820972442627,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ },
+ {
+  "model": "kilo/nvidia/nemotron-3-ultra-550b-a55b:free",
+  "success": 3,
+  "correct": 3,
+  "avg_lat": 1.56,
+  "min_lat": 1.37,
+  "max_lat": 1.83,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.369192361831665,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 1.8332836627960205,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 1.4635818004608154,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ },
+ {
+  "model": "kilo/dots-studio/dots-3-note-preview:free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 2.07,
+  "min_lat": 1.76,
+  "max_lat": 2.49,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.968184471130371,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 1.7625267505645752,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 2.48907208442688,
+    "ok_http": true,
+    "correct": false,
+    "out": ""
+   }
+  ]
+ },
+ {
+  "model": "kilo/poolside/laguna-s-2.1:free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 1.71,
+  "min_lat": 1.22,
+  "max_lat": 2.16,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.7708079814910889,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 2.1559596061706543,
+    "ok_http": true,
+    "correct": false,
+    "out": ""
+   },
+   {
+    "round": 3,
+    "lat": 1.2181053161621094,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ },
+ {
+  "model": "kilo/openrouter/free",
+  "success": 3,
+  "correct": 1,
+  "avg_lat": 1.83,
+  "min_lat": 1.62,
+  "max_lat": 2.23,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.6160290241241455,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 2.230968713760376,
+    "ok_http": true,
+    "correct": false,
+    "out": ""
+   },
+   {
+    "round": 3,
+    "lat": 1.6553223133087158,
+    "ok_http": true,
+    "correct": false,
+    "out": ""
+   }
+  ]
+ },
+ {
+  "model": "kilo/kilo-auto/free",
+  "success": 3,
+  "correct": 3,
+  "avg_lat": 1.32,
+  "min_lat": 1.09,
+  "max_lat": 1.5,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.3565983772277832,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 1.0905485153198242,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 1.4995942115783691,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ },
+ {
+  "model": "vision/auto",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 0.85,
+  "min_lat": 0.73,
+  "max_lat": 1.09,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.085221529006958,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 0.7267253398895264,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 0.7495005130767822,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "vision/zhipu/glm-4v-flash",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 0.72,
+  "min_lat": 0.7,
+  "max_lat": 0.75,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 0.7546138763427734,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 0.6992733478546143,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 0.7162303924560547,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "nemotron-3.5-super-vl-free",
+  "success": 3,
+  "correct": 3,
+  "avg_lat": 12.2,
+  "min_lat": 1.99,
+  "max_lat": 32.3,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 32.30267405509949,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 2.317824602127075,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 1.9854371547698975,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ },
+ {
+  "model": "codex/inclusionai/ling-3.0-flash-vl:free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 1.7,
+  "min_lat": 1.57,
+  "max_lat": 1.94,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.94252610206604,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 1.589369535446167,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 1.57096266746521,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "codex/qwen/qwen3.8-27b:free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 1.62,
+  "min_lat": 1.5,
+  "max_lat": 1.8,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.4953930377960205,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 1.5664920806884766,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 1.7996160984039307,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "codex/dots-studio/dots-3-note-preview:free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 2.0,
+  "min_lat": 1.73,
+  "max_lat": 2.15,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.7317326068878174,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 2.115004062652588,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 2.148723602294922,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "codex/nex-agi/nex-n2.5-pro:free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 2.07,
+  "min_lat": 1.64,
+  "max_lat": 2.71,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.6396880149841309,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 1.8609657287597656,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 2.7123334407806396,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "codex/nex-agi/nex-n2.5-mini:free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 1.61,
+  "min_lat": 1.55,
+  "max_lat": 1.65,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 1.622696876525879,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 1.5544536113739014,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 1.6461560726165771,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "mimo/mimo-v2.5-free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 0.77,
+  "min_lat": 0.67,
+  "max_lat": 0.93,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 0.9285068511962891,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 0.671419620513916,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 0.6955966949462891,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "mimo/nemotron-3-ultra-free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 0.73,
+  "min_lat": 0.64,
+  "max_lat": 0.83,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 0.638925313949585,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 0.8309051990509033,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 0.711493730545044,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "mimo/nemotron-3.5-lightning-free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 0.75,
+  "min_lat": 0.67,
+  "max_lat": 0.87,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 0.6681332588195801,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 0.8744609355926514,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 0.6954522132873535,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "mimo/laguna-s-2.1-free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 0.9,
+  "min_lat": 0.67,
+  "max_lat": 1.3,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 0.6689736843109131,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 0.7362682819366455,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 1.3027119636535645,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "mimo/deepseek-v4-flash-free",
+  "success": 3,
+  "correct": 2,
+  "avg_lat": 0.72,
+  "min_lat": 0.67,
+  "max_lat": 0.78,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 0.7000813484191895,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 0.7781414985656738,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 0.671658992767334,
+    "ok_http": true,
+    "correct": false,
+    "out": "8"
+   }
+  ]
+ },
+ {
+  "model": "nemotron-3.5-lightning-free",
+  "success": 3,
+  "correct": 3,
+  "avg_lat": 24.05,
+  "min_lat": 7.29,
+  "max_lat": 35.71,
+  "detail": [
+   {
+    "round": 1,
+    "lat": 7.294386386871338,
+    "ok_http": true,
+    "correct": true,
+    "out": "巴黎"
+   },
+   {
+    "round": 2,
+    "lat": 29.147545337677002,
+    "ok_http": true,
+    "correct": true,
+    "out": "117"
+   },
+   {
+    "round": 3,
+    "lat": 35.70520877838135,
+    "ok_http": true,
+    "correct": true,
+    "out": "9"
+   }
+  ]
+ }
+]

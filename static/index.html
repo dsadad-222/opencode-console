@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>OpenCode · 上游控制台</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/extra.css">
+<script defer src="/app.js"></script>
+</head>
+<body>
+<div id="workspace" class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="/"><span class="brand-symbol">o<span>↗</span></span><span>OPENCODE<small>上游控制台</small></span></a>
+    <div class="nav-caption">工作空间</div>
+    <nav aria-label="主要导航">
+      <button data-page="dashboard" class="nav-item selected"><span>▦</span>概览</button>
+      <button data-page="models" class="nav-item"><span>◫</span>模型管理</button>
+      <button data-page="logs" class="nav-item"><span>≡</span>请求日志</button>
+      <button data-page="routing" class="nav-item"><span>⌥</span>路由配置</button>
+      <button data-page="test" class="nav-item"><span>↗</span>测试台</button>
+      <button data-page="guide" class="nav-item"><span>◇</span>接入指南</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <span class="tag">LOCAL WORKSPACE</span>
+      <p><i class="status-dot" id="side-dot"></i> <span id="side-state">连接中…</span></p>
+      <button id="btn-refresh-all" class="logout">刷新模型列表 <span>↻</span></button>
+    </div>
+  </aside>
+
+  <div class="main-shell">
+    <header class="topbar">
+      <div><span class="muted">工作空间</span><span class="slash">/</span><span id="breadcrumb">概览</span></div>
+      <div class="topbar-right"><span id="host-label" class="mono">127.0.0.1:8895</span><span class="avatar">O</span></div>
+    </header>
+
+    <main>
+      <div class="page-title">
+        <div>
+          <span id="page-kicker" class="eyebrow">UPSTREAM OVERVIEW</span>
+          <h1 id="page-title">概览<span class="title-dot">.</span></h1>
+          <p id="page-desc" class="muted">opencode 转发链路的实时状态与调用统计。</p>
+        </div>
+        <button id="btn-refresh" class="secondary"><span>↻</span> 刷新状态</button>
+      </div>
+
+      <div id="load-error" class="banner warning" role="alert" hidden></div>
+
+      <!-- ══ 概览 ══ -->
+      <section id="page-dashboard" class="page-panel">
+        <div class="dashboard-metrics">
+          <article><span>可用模型</span><strong id="dash-models">—</strong><small id="dash-models-note">最近一次实测通过</small></article>
+          <article><span>24h 请求</span><strong id="dash-req">—</strong><small id="dash-req-note">含流式与非流式</small></article>
+          <article><span>成功率</span><strong id="dash-ok">—</strong><small id="dash-ok-note">最近 24 小时</small></article>
+          <article><span>P95 延迟</span><strong id="dash-p95">—</strong><small id="dash-p95-note">中位数为准，均值易被长尾拉高</small></article>
+        </div>
+
+        <div class="dashboard-detail">
+          <span>转发层 <b id="dash-fwd">—</b></span>
+          <span>serve <b id="dash-serve">—</b></span>
+          <span>已拉黑 <b id="dash-black">—</b></span>
+          <span>平均耗时 <b id="dash-avg">—</b></span>
+          <button id="dash-health" class="primary">运行全链路体检</button>
+        </div>
+
+        <div class="dashboard-grid">
+          <div>
+            <article class="surface dash-accounts">
+              <div class="response-header">
+                <div><h2>全通道模型矩阵</h2><p class="muted" id="dash-matrix-note">点击任一模型进入测试台</p></div>
+                <button data-goto="models" class="text-button">管理模型 ↗</button>
+              </div>
+              <div id="model-grid"></div>
+            </article>
+
+            <article class="surface dash-recent" style="margin-top:16px">
+              <div class="response-header">
+                <div><h2>最近请求</h2><p class="muted">最新 12 条，来自转发层事件流。</p></div>
+                <span class="eyebrow">LIVE ACTIVITY</span>
+              </div>
+              <div class="dashboard-table">
+                <table>
+                  <thead><tr><th>时间</th><th>模型</th><th>通道</th><th>结果</th><th class="align-right">耗时</th></tr></thead>
+                  <tbody id="dash-recent-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="surface" style="margin-top:16px">
+              <div class="response-header">
+                <div><h2>近 24 小时调用量</h2><p class="muted">按小时聚合，绿色为成功。</p></div>
+                <span class="eyebrow">THROUGHPUT</span>
+              </div>
+              <div id="spark" class="spark-wrap"></div>
+            </article>
+          </div>
+
+          <aside>
+            <article class="dashboard-connect">
+              <span class="eyebrow light">API CONNECTION</span>
+              <h2>一条链路，<br>接入任意客户端。</h2>
+              <p>OpenAI 兼容端点，免费档模型池。</p>
+              <label>BASE URL</label>
+              <code id="dash-base">http://127.0.0.1:8893/v1</code>
+              <button id="dash-copy" class="secondary">复制 API 地址</button>
+              <button data-goto="guide" class="dashboard-link">查看接入指南 ↗</button>
+            </article>
+
+            <article class="dash-start">
+              <h3>链路状态</h3>
+              <div class="chain-list" id="chain-list"></div>
+              <p class="muted" id="dash-since"></p>
+              <p class="muted">统计来自转发层内存缓冲，控制台每 5 秒采集一次落库。</p>
+            </article>
+
+            <article class="surface" style="margin-top:16px">
+              <div class="response-header"><h2>巡检</h2><span class="pill" id="check-pill">—</span></div>
+              <p class="muted" id="check-note" style="font-size:12px">尚未巡检</p>
+              <div id="check-bad" class="bad-list"></div>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ══ 模型管理 ══ -->
+      <section id="page-models" class="page-panel" hidden>
+        <div class="stats">
+          <article><span class="stat-label">在架模型</span><div class="stat-number" id="m-total">—</div><span class="stat-foot">从 serve 动态拉取</span></article>
+          <article><span class="stat-label">已拉黑</span><div class="stat-value" id="m-black">—</div><span class="stat-foot">不出现在 /v1/models</span></article>
+          <article class="stat-accent"><span class="stat-label">批量实测 <i class="status-dot"></i></span><div class="stat-value" id="m-batch">空闲 <span class="spark">↗</span></div><span class="stat-foot" id="m-batch-note">12 个模型约需 2 分钟</span></article>
+        </div>
+
+        <div class="section-toolbar">
+          <div><h2>模型列表 <span id="m-badge" class="count-badge">0</span></h2><p>「拉黑」= 写进 config.json 黑名单并从 /v1/models 移除；「设默认」= 空模型名时的兜底选择。</p></div>
+          <div class="toolbar-actions">
+            <button id="m-batch-start" class="primary">▣ 全部实测</button>
+            <button id="m-batch-stop" class="secondary" hidden>停止</button>
+          </div>
+        </div>
+
+        <div class="pool-toolbar">
+          <input id="m-search" type="search" placeholder="搜索模型 ID 或别名" aria-label="搜索模型">
+          <select id="m-filter" aria-label="筛选模型状态">
+            <option value="all">全部状态</option>
+            <option value="ok">实测通过</option>
+            <option value="bad">实测失败</option>
+            <option value="unknown">未测</option>
+            <option value="black">已拉黑</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th>模型</th><th>Provider</th><th>状态</th><th>最近实测</th>
+              <th>延迟</th><th>24h 调用</th><th>成功率</th><th class="align-right">操作</th>
+            </tr></thead>
+            <tbody id="models-body"></tbody>
+          </table>
+        </div>
+
+        <div class="section-toolbar" style="margin-top:30px">
+          <div><h2>代理档 <span id="px-badge" class="count-badge">0</span></h2>
+            <p>模型名<strong>不带</strong> <code>-free</code> 就走协议代理，<strong>支持 tools / tool_use</strong>（含流式）。上游 <code id="px-up">—</code>，吃的是号池额度，不是免费额度。</p></div>
+        </div>
+        <div id="proxy-grid" class="model-grid"></div>
+        <div class="note-row"><span>ⓘ</span>
+          <p>代理档不受本页的黑名单/别名影响（那套只管免费池）。要停用某个代理模型，直接在上游侧拉黑。</p>
+        </div>
+
+        <div class="section-toolbar" style="margin-top:30px">
+          <div><h2>外部 provider <span id="ext-badge" class="count-badge">0</span></h2>
+            <p>厂商<strong>官方免费层</strong>（NVIDIA NIM / OpenRouter 等），标准 OpenAI 兼容端点，
+            <strong>原生支持 tools</strong>，既不经过号池、也不经过 serve。
+            模型名带前缀：<code>nvidia/…</code>、<code>openrouter/…:free</code>。</p></div>
+        </div>
+        <div id="ext-grid" class="ext-list"></div>
+        <div class="note-row" id="ext-note" hidden><span>!</span>
+          <p>有 provider 还没配 Key。编辑 <code id="ext-conf-path">ext_providers.json</code> 填 <code>key</code>，
+          或设置对应的环境变量；改完不用重启转发层。</p>
+        </div>
+
+        <div class="note-row"><span>ⓘ</span>
+          <p>免费档模型的上架/下架由上游决定，随时会变。控制台每小时静默巡检一轮，失败项会记录在概览页。</p>
+        </div>
+
+        <div class="note-row"><span>ⓘ</span>
+          <p><b>免费档现已支持工具调用</b>（v17，两条协议都可以）：
+          靠提示词约定 + 输出解析实现，实测 6/7 模型稳定。模型不按格式输出时会退化成普通聊天
+          —— 不报错，但工具不会执行。要 100% 可靠请用代理档模型名，或用上面的外部 provider。</p>
+        </div>
+      </section>
+
+      <!-- ══ 请求日志 ══ -->
+      <section id="page-logs" class="page-panel" hidden>
+        <div class="section-toolbar">
+          <div><h2>请求日志</h2><p id="logs-note">最近 200 条，30 天自动清理。</p></div>
+          <div class="toolbar-actions">
+            <button id="logs-reload" class="secondary">↻ 刷新</button>
+            <button id="logs-export" class="primary">⇩ 导出 CSV</button>
+          </div>
+        </div>
+
+        <div class="pool-toolbar">
+          <input id="logs-search" type="search" placeholder="按模型筛选" aria-label="按模型筛选">
+          <select id="logs-filter" aria-label="筛选结果">
+            <option value="">全部</option>
+            <option value="failed">仅失败</option>
+            <option value="slow">仅慢请求（≥10s）</option>
+            <option value="stream">仅流式</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th>时间</th><th>模型</th><th>类型</th><th>结果</th>
+              <th class="align-right">耗时</th><th class="align-right">输入 tok</th>
+              <th class="align-right">输出 tok</th><th class="align-right">字符</th><th>错误</th>
+            </tr></thead>
+            <tbody id="logs-body"></tbody>
+          </table>
+        </div>
+        <div id="logs-empty" class="empty" hidden>
+          <span class="empty-icon">≡</span><h3>还没有请求记录</h3>
+          <p>客户端调用 8893 后，事件会自动出现在这里。</p>
+        </div>
+      </section>
+
+      <!-- ══ 路由配置 ══ -->
+      <section id="page-routing" class="page-panel" hidden>
+        <div class="routing-grid">
+          <article class="surface">
+            <span class="eyebrow">01 / NETWORK</span>
+            <h2>出网方式</h2>
+            <p class="muted">决定 opencode serve 出网是否走代理。改完需要重启 serve 才生效（转发层会在下次拉起时读取）。</p>
+            <div class="radio-row" id="net-modes">
+              <label><input type="radio" name="net" value="auto"> <b>自动</b><small>直连优先，不通再试代理</small></label>
+              <label><input type="radio" name="net" value="direct"> <b>强制直连</b><small>永不设代理</small></label>
+              <label><input type="radio" name="net" value="proxy"> <b>强制代理</b><small>走 127.0.0.1:7890</small></label>
+            </div>
+            <div class="note-row"><span>ⓘ</span><p>历史事故：无条件设 <code>HTTPS_PROXY</code> 而 Clash 没开时，serve 状态仍显示 healthy，但所有模型返回空回复。所以默认「自动」。</p></div>
+          </article>
+
+          <article class="surface">
+            <span class="eyebrow">02 / DEFAULTS</span>
+            <h2>默认模型</h2>
+            <p class="muted">客户端传空模型名时用哪个。留空 = 用列表第一个。</p>
+            <label for="default-model">默认模型</label>
+            <select id="default-model"></select>
+            <label for="test-prompt" style="margin-top:16px">巡检提示词</label>
+            <input id="test-prompt" maxlength="200" placeholder="只回复两个字：在线">
+            <button id="save-routing" class="primary wide" style="margin-top:18px">保存配置</button>
+          </article>
+
+          <article class="surface">
+            <span class="eyebrow">03 / MAINTENANCE</span>
+            <h2>日志与巡检</h2>
+            <label class="inline-checkbox"><input id="check-enabled" type="checkbox">启用每小时静默巡检</label>
+            <label for="check-interval">巡检间隔（分钟）</label>
+            <input id="check-interval" type="number" min="5" max="1440" value="60">
+            <label for="retention">日志保留（天）</label>
+            <input id="retention" type="number" min="1" max="90" value="30">
+            <button id="save-maint" class="secondary wide" style="margin-top:18px">保存设置</button>
+            <p class="muted" style="font-size:12px;margin-top:12px">日志清理每 6 小时跑一次；被删的是 SQLite 里的历史行，不影响转发层。</p>
+          </article>
+
+          <article class="surface">
+            <span class="eyebrow">04 / BLACKLIST</span>
+            <h2>黑名单</h2>
+            <p class="muted">仍在 serve 列表里、但确定调不通的模型。加进来后不会再出现在 <code>/v1/models</code>。</p>
+            <div class="blacklist-box" id="blacklist-box"></div>
+            <div class="inline-add">
+              <input id="black-add" placeholder="输入模型 ID">
+              <button id="black-add-btn" class="secondary">加入</button>
+            </div>
+            <button id="reload-models" class="text-button" style="margin-top:14px">强制刷新模型列表 ↗</button>
+          </article>
+
+          <article class="surface">
+            <span class="eyebrow">05 / PIPE LIMITS</span>
+            <h2>体量与超时</h2>
+            <p class="muted">免费档（pipe 档）的关键参数。客户端报 <code>Connection error</code> 时先看这里。</p>
+            <div class="limit-list" id="pipe-limits"></div>
+            <div class="note-row"><span>ⓘ</span><p>这些值在转发层启动时从环境变量读取，控制台改不了，改完要重启 8893。</p></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ══ 测试台 ══ -->
+      <section id="page-test" class="page-panel" hidden>
+        <div class="test-layout">
+          <form id="test-form" class="surface test-form">
+            <span class="eyebrow">LIVE REQUEST</span>
+            <h2>发送一条真实请求</h2>
+            <p class="muted">会走完整链路（建 session → 发消息），真实消耗上游免费额度。</p>
+            <label for="test-model">测试模型</label>
+            <select id="test-model" required></select>
+            <label for="test-input">消息</label>
+            <textarea id="test-input" rows="5" maxlength="2000" required>只回复两个字：在线</textarea>
+            <button id="test-submit" class="primary wide" type="submit">发送测试 ↗</button>
+          </form>
+
+          <article class="surface response-surface">
+            <div class="response-header">
+              <h2>响应结果</h2>
+              <span id="test-status" class="pill">等待请求</span>
+            </div>
+            <pre id="test-output" class="test-output">选择模型并发送消息，结果将在这里显示。</pre>
+            <div id="test-meta" class="muted mono"></div>
+          </article>
+        </div>
+
+        <div class="section-toolbar">
+          <div><h2>实测历史</h2><p>记录状态、耗时与回复摘要，用于对比模型稳定性。</p></div>
+        </div>
+        <div id="probe-history" class="history"></div>
+      </section>
+
+      <!-- ══ 接入指南 ══ -->
+      <section id="page-guide" class="page-panel" hidden>
+        <div class="guide-grid">
+          <article class="surface">
+            <span class="eyebrow">01 / ENDPOINT</span>
+            <h2>OpenAI 兼容端点</h2>
+            <label>Base URL</label>
+            <div class="code-block"><code>http://127.0.0.1:8893/v1</code><button data-copy="http://127.0.0.1:8893/v1" class="copy-button">复制</button></div>
+            <p>支持 <code>/v1/chat/completions</code> 与 <code>/v1/models</code>。流式与非流式都支持。</p>
+            <label style="margin-top:16px">测试命令</label>
+            <div class="code-block"><code>curl http://127.0.0.1:8893/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"deepseek-v4.1-flash-free","messages":[{"role":"user","content":"hi"}]}'</code><button data-copy='curl http://127.0.0.1:8893/v1/chat/completions -H "Content-Type: application/json" -d "{\"model\":\"deepseek-v4.1-flash-free\",\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}]}"' class="copy-button">复制</button></div>
+          </article>
+
+          <article class="surface">
+            <span class="eyebrow">02 / DSH</span>
+            <h2>接入 DSH</h2>
+            <p>在 <code>profiles/desktop/cordis.yml</code> 里新增一个 provider：</p>
+            <div class="code-block"><code>opencode2:
+  type: openai
+  baseURL: http://127.0.0.1:8893/v1
+  apiKey: any
+  models:
+    - deepseek-v4.1-flash-free
+    - nemotron-3-ultra-free</code></div>
+            <p>模型列表以本控制台「模型管理」为准，别照抄旧配置 —— 上游随时会下架。</p>
+          </article>
+
+          <article class="surface">
+            <span class="eyebrow">03 / ANTHROPIC</span>
+            <h2>Claude 系客户端</h2>
+            <label>Base URL（不带 /v1）</label>
+            <div class="code-block"><code>http://127.0.0.1:8893</code><button data-copy="http://127.0.0.1:8893" class="copy-button">复制</button></div>
+            <p>支持 <code>POST /v1/messages</code> 和 <code>/v1/messages/count_tokens</code>。
+            流式严格按 <code>message_start → content_block_* → message_delta → message_stop</code> 发。</p>
+            <p><b>限制：不支持工具调用。</b>转发层只搬运文本，<code>tools</code> /
+            <code>tool_use</code> / <code>tool_result</code> 都不会被转换 ——
+            纯对话可用，但 Claude Code 那种靠工具干活的场景接过来会退化成聊天。</p>
+          </article>
+        </div>
+
+        <article class="surface endpoints">
+          <h2>支持的接口</h2>
+          <div><span>POST</span><code>/v1/chat/completions</code><p>OpenAI Chat Completions</p></div>
+          <div><span>POST</span><code>/v1/messages</code><p>Anthropic Messages（含流式）</p></div>
+          <div><span>POST</span><code>/v1/messages/count_tokens</code><p>token 估算</p></div>
+          <div><span>GET</span><code>/v1/models</code><p>当前可用模型</p></div>
+        </article>
+      </section>
+
+      <footer class="main-footer"><span>OPENCODE CONSOLE</span><span>模型管理 · 链路监控 · 即时验证</span></footer>
+    </main>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

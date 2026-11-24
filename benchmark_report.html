@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<title>8893 全模型实测排行 · 2026-10-23</title><style>
+body{background:#0f1117;color:#e5e7eb;font-family:"Segoe UI",sans-serif;margin:0;padding:32px}
+h1{font-size:22px} .sub{color:#9ca3af;font-size:13px;margin-bottom:20px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{background:#1a1d27;color:#9ca3af;text-align:left;padding:8px 10px;border-bottom:1px solid #2a2e3d;position:sticky;top:0}
+td{padding:7px 10px;border-bottom:1px solid #1f2330}
+tr:hover td{background:#161a24}
+.m{font-family:Consolas,monospace;color:#7dd3fc}
+.tag{background:#1e293b;color:#94a3b8;padding:2px 8px;border-radius:10px;font-size:11.5px}
+.dim{color:#6b7280;font-size:12px}
+.legend{margin:14px 0;font-size:12.5px;color:#9ca3af}
+</style></head><body>
+<h1>🏁 8893 全模型实测排行</h1>
+<div class="sub">2026-10-23 12:27 · 28 个模型 × 3 轮真实请求 · 评分 = 答对×2 + 成功（满分 9）</div>
+<div class="legend">测项：① 法国首都 ② 9×13 ③ stability 字母数(=9)。延迟为 3 轮平均（含网络+上游）。</div>
+<table><thead><tr><th>#</th><th>模型</th><th>通道</th><th>评级</th><th>总分</th><th>均延迟</th><th>最快</th><th>最慢</th><th>稳定</th><th>能力</th><th>备注</th></tr></thead>
+<tbody><tr><td>1</td><td class="m">kilo/reflection/beam-free</td>
+    <td><span class="tag">kilo</span></td>
+    <td><b style="color:#22c55e">优秀</b></td><td>9/9</td>
+    <td>1.22s</td><td>1.08s</td><td>1.3s</td>
+    <td>3/3</td><td>3/3</td><td class="dim"></td></tr><tr><td>2</td><td class="m">kilo/kilo-auto/free</td>
+    <td><span class="tag">kilo</span></td>
+    <td><b style="color:#22c55e">优秀</b></td><td>9/9</td>
+    <td>1.32s</td><td>1.09s</td><td>1.5s</td>
+    <td>3/3</td><td>3/3</td><td class="dim"></td></tr><tr><td>3</td><td class="m">kilo/nvidia/nemotron-3-ultra-550b-a55b:free</td>
+    <td><span class="tag">kilo</span></td>
+    <td><b style="color:#22c55e">优秀</b></td><td>9/9</td>
+    <td>1.56s</td><td>1.37s</td><td>1.83s</td>
+    <td>3/3</td><td>3/3</td><td class="dim"></td></tr><tr><td>4</td><td class="m">glm-5.3-flash-free</td>
+    <td><span class="tag">免费档</span></td>
+    <td><b style="color:#22c55e">优秀</b></td><td>9/9</td>
+    <td>1.61s</td><td>1.2s</td><td>1.83s</td>
+    <td>3/3</td><td>3/3</td><td class="dim"></td></tr><tr><td>5</td><td class="m">deepseek-v4.1-flash-free</td>
+    <td><span class="tag">免费档</span></td>
+    <td><b style="color:#22c55e">优秀</b></td><td>9/9</td>
+    <td>2.9s</td><td>2.48s</td><td>3.38s</td>
+    <td>3/3</td><td>3/3</td><td class="dim"></td></tr><tr><td>6</td><td class="m">big-pickle</td>
+    <td><span class="tag">免费档</span></td>
+    <td><b style="color:#22c55e">优秀</b></td><td>9/9</td>
+    <td>2.93s</td><td>2.49s</td><td>3.7s</td>
+    <td>3/3</td><td>3/3</td><td class="dim"></td></tr><tr><td>7</td><td class="m">flint-40b-free</td>
+    <td><span class="tag">免费档</span></td>
+    <td><b style="color:#22c55e">优秀</b></td><td>9/9</td>
+    <td>4.58s</td><td>3.18s</td><td>6.61s</td>
+    <td>3/3</td><td>3/3</td><td class="dim"></td></tr><tr><td>8</td><td class="m">mimo-v2.6-flash-free</td>
+    <td><span class="tag">免费档</span></td>
+    <td><b style="color:#22c55e">优秀</b></td><td>9/9</td>
+    <td>5.69s</td><td>3.66s</td><td>6.82s</td>
+    <td>3/3</td><td>3/3</td><td class="dim"></td></tr><tr><td>9</td><td class="m">nemotron-3-ultra-free</td>
+    <td><span class="tag">免费档</span></td>
+    <td><b style="color:#22c55e">优秀</b></td><td>9/9</td>
+    <td>6.61s</td><td>3.58s</td><td>12.16s</td>
+    <td>3/3</td><td>3/3</td><td class="dim"></td></tr><tr><td>10</td><td class="m">nemotron-3.5-super-vl-free</td>
+    <td><span class="tag">免费档</span></td>
+    <td><b style="color:#22c55e">优秀</b></td><td>9/9</td>
+    <td>12.2s</td><td>1.99s</td><td>32.3s</td>
+    <td>3/3</td><td>3/3</td><td class="dim"></td></tr><tr><td>11</td><td class="m">nemotron-3.5-lightning-free</td>
+    <td><span class="tag">免费档</span></td>
+    <td><b style="color:#22c55e">优秀</b></td><td>9/9</td>
+    <td>24.05s</td><td>7.29s</td><td>35.71s</td>
+    <td>3/3</td><td>3/3</td><td class="dim"></td></tr><tr><td>12</td><td class="m">vision/zhipu/glm-4v-flash</td>
+    <td><span class="tag">vision</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>0.72s</td><td>0.7s</td><td>0.75s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>13</td><td class="m">mimo/deepseek-v4-flash-free</td>
+    <td><span class="tag">mimo</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>0.72s</td><td>0.67s</td><td>0.78s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>14</td><td class="m">mimo/nemotron-3-ultra-free</td>
+    <td><span class="tag">mimo</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>0.73s</td><td>0.64s</td><td>0.83s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>15</td><td class="m">mimo/nemotron-3.5-lightning-free</td>
+    <td><span class="tag">mimo</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>0.75s</td><td>0.67s</td><td>0.87s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>16</td><td class="m">mimo/mimo-v2.5-free</td>
+    <td><span class="tag">mimo</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>0.77s</td><td>0.67s</td><td>0.93s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>17</td><td class="m">vision/auto</td>
+    <td><span class="tag">vision</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>0.85s</td><td>0.73s</td><td>1.09s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>18</td><td class="m">mimo/laguna-s-2.1-free</td>
+    <td><span class="tag">mimo</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>0.9s</td><td>0.67s</td><td>1.3s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>19</td><td class="m">kilo/recursive/flint-v1.0:free</td>
+    <td><span class="tag">kilo</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>1.49s</td><td>1.08s</td><td>1.81s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>20</td><td class="m">codex/nex-agi/nex-n2.5-mini:free</td>
+    <td><span class="tag">codex</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>1.61s</td><td>1.55s</td><td>1.65s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>21</td><td class="m">codex/qwen/qwen3.8-27b:free</td>
+    <td><span class="tag">codex</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>1.62s</td><td>1.5s</td><td>1.8s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>22</td><td class="m">codex/inclusionai/ling-3.0-flash-vl:free</td>
+    <td><span class="tag">codex</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>1.7s</td><td>1.57s</td><td>1.94s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>23</td><td class="m">kilo/poolside/laguna-s-2.1:free</td>
+    <td><span class="tag">kilo</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>1.71s</td><td>1.22s</td><td>2.16s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>24</td><td class="m">codex/dots-studio/dots-3-note-preview:free</td>
+    <td><span class="tag">codex</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>2.0s</td><td>1.73s</td><td>2.15s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>25</td><td class="m">kilo/dots-studio/dots-3-note-preview:free</td>
+    <td><span class="tag">kilo</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>2.07s</td><td>1.76s</td><td>2.49s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>26</td><td class="m">codex/nex-agi/nex-n2.5-pro:free</td>
+    <td><span class="tag">codex</span></td>
+    <td><b style="color:#eab308">良好</b></td><td>7/9</td>
+    <td>2.07s</td><td>1.64s</td><td>2.71s</td>
+    <td>3/3</td><td>2/3</td><td class="dim">有答错/空回复</td></tr><tr><td>27</td><td class="m">kilo/openrouter/free</td>
+    <td><span class="tag">kilo</span></td>
+    <td><b style="color:#f97316">一般</b></td><td>5/9</td>
+    <td>1.83s</td><td>1.62s</td><td>2.23s</td>
+    <td>3/3</td><td>1/3</td><td class="dim">有答错/空回复</td></tr><tr><td>28</td><td class="m">kilo/minimax/minimax-m3.1-flash:free</td>
+    <td><span class="tag">kilo</span></td>
+    <td><b style="color:#ef4444">差</b></td><td>0/9</td>
+    <td>—</td><td>Nones</td><td>Nones</td>
+    <td>0/3</td><td>0/3</td><td class="dim">上游 502 全挂</td></tr></tbody></table></body></html>

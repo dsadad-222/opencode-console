@@ -1,0 +1,8 @@
+console.db
+config.json
+ext_providers.json
+logs/
+__pycache__/
+*.pyc
+recheck*.txt
+*.log
